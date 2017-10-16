@@ -50,122 +50,32 @@ public class MainActivity extends AppCompatActivity {
         button00.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                xoController.click(0, 0);
-                Log.v("player turn", "It was turn of: " + xoModel.getTurn());
-                if(xoModel.getWinner() == 0) {
-                    if (xoModel.getTurn() == firstPlayer) {
-                        button00.setText("x");
-                        xoController.setTurn(secondPlayer);
-                        Log.v("player turn", "Now it's turn of: " + xoModel.getTurn());
-                    } else if (xoModel.getTurn() == secondPlayer) {
-                        button00.setText("o");
-                        xoController.setTurn(firstPlayer);
-                        Log.v("player turn", "Now it's turn of: " + xoModel.getTurn());
-                    }
-                } else {
-                    if(xoModel.getWinner() == 1){
-                        button00.setText("x");
-                    } else button00.setText("o");
-                    playerTextView.setText("Winner is " + xoModel.getWinner());
-                }
-                button00.setClickable(false);
+                clickButton((Button)v, 0, 0);
             }
         });
 
         button10.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                xoController.click(1, 0);
-                Log.v("player turn", "It was turn of: " + xoModel.getTurn());
-                if(xoModel.getWinner() == 0) {
-                    if (xoModel.getTurn() == firstPlayer) {
-                        button10.setText("x");
-                        xoController.setTurn(secondPlayer);
-                        Log.v("player turn", "Now it's turn of: " + xoModel.getTurn());
-                    } else if (xoModel.getTurn() == secondPlayer) {
-                        button10.setText("o");
-                        xoController.setTurn(firstPlayer);
-                        Log.v("player turn", "Now it's turn of: " + xoModel.getTurn());
-                    }
-                } else {
-                    if(xoModel.getWinner() == 1){
-                        button10.setText("x");
-                    } else button10.setText("o");
-                    playerTextView.setText("Winner is " + xoModel.getWinner());
-                }
-                button10.setClickable(false);
+                clickButton((Button)v, 1, 0);
             }
         });
         button20.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                xoController.click(2, 0);
-                Log.v("player turn", "It was turn of: " + xoModel.getTurn());
-                if(xoModel.getWinner() == 0) {
-                    if (xoModel.getTurn() == firstPlayer) {
-                        button20.setText("x");
-                        xoController.setTurn(secondPlayer);
-                        Log.v("player turn", "Now it's turn of: " + xoModel.getTurn());
-                    } else if (xoModel.getTurn() == secondPlayer) {
-                        button20.setText("o");
-                        xoController.setTurn(firstPlayer);
-                        Log.v("player turn", "Now it's turn of: " + xoModel.getTurn());
-                    }
-                } else {
-                    if(xoModel.getWinner() == 1){
-                        button20.setText("x");
-                    } else button20.setText("o");
-                    playerTextView.setText("Winner is " + xoModel.getWinner());
-                }
-                button20.setClickable(false);
+                clickButton((Button)v, 2, 0);
             }
         });
         button01.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                xoController.click(0, 1);
-                Log.v("player turn", "It was turn of: " + xoModel.getTurn());
-                if(xoModel.getWinner() == 0) {
-                    if (xoModel.getTurn() == firstPlayer) {
-                        button01.setText("x");
-                        xoController.setTurn(secondPlayer);
-                        Log.v("player turn", "Now it's turn of: " + xoModel.getTurn());
-                    } else if (xoModel.getTurn() == secondPlayer) {
-                        button01.setText("o");
-                        xoController.setTurn(firstPlayer);
-                        Log.v("player turn", "Now it's turn of: " + xoModel.getTurn());
-                    }
-                } else {
-                    if(xoModel.getWinner() == 1){
-                        button01.setText("x");
-                    } else button01.setText("o");
-                    playerTextView.setText("Winner is " + xoModel.getWinner());
-                }
-                button01.setClickable(false);
+                clickButton((Button)v, 0, 1);
             }
         });
         button11.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                xoController.click(1, 1);
-                Log.v("player turn", "It was turn of: " + xoModel.getTurn());
-                if(xoModel.getWinner() == 0) {
-                    if (xoModel.getTurn() == firstPlayer) {
-                        button11.setText("x");
-                        xoController.setTurn(secondPlayer);
-                        Log.v("player turn", "Now it's turn of: " + xoModel.getTurn());
-                    } else if (xoModel.getTurn() == secondPlayer) {
-                        button11.setText("o");
-                        xoController.setTurn(firstPlayer);
-                        Log.v("player turn", "Now it's turn of: " + xoModel.getTurn());
-                    }
-                } else {
-                    if(xoModel.getWinner() == 1){
-                        button11.setText("x");
-                    } else button11.setText("o");
-                    playerTextView.setText("Winner is " + xoModel.getWinner());
-                }
-                button11.setClickable(false);
+                clickButton((Button)v, 1, 1);
             }
         });
 
@@ -180,6 +90,29 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+    }
+
+    private void clickButton(Button clickedButton, int x, int y) {
+        xoController.click(x, y);
+        Log.v("player turn", "It was turn of: " + xoModel.getTurn());
+        if(xoModel.getWinner() == 0) {
+            if (xoModel.getTurn() == firstPlayer) {
+                clickedButton.setText("x");
+                xoController.setTurn(secondPlayer);
+                Log.v("player turn", "Now it's turn of: " + xoModel.getTurn());
+            } else if (xoModel.getTurn() == secondPlayer) {
+                clickedButton.setText("o");
+                xoController.setTurn(firstPlayer);
+                Log.v("player turn", "Now it's turn of: " + xoModel.getTurn());
+            }
+        } else {
+            if(xoModel.getWinner() == 1){
+                clickedButton.setText("x");
+            } else clickedButton.setText("o");
+            playerTextView.setText("Winner is " + xoModel.getWinner());
+        }
+        clickedButton.setClickable(false);
 
     }
 }
